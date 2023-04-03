@@ -1,5 +1,4 @@
 ## build a practical project using spring boot 3.0, kotlin and AWS
----
 
 스프링 부트, 코틀린 소개
 - 스프링 부트 3.0
