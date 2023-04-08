@@ -1,6 +1,6 @@
 package com.example.core.support
 
-import com.example.core.config.DockerComposeConatinersConfig
+import com.example.core.config.DockerComposeContainersConfig
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import org.springframework.beans.factory.annotation.Autowired
@@ -11,7 +11,7 @@ import org.springframework.test.web.servlet.MockMvc
 
 @SpringBootTest
 @AutoConfigureMockMvc
-@ContextConfiguration(initializers = [DockerComposeConatinersConfig.Companion.TestContainerInitializer::class])
+@ContextConfiguration(initializers = [DockerComposeContainersConfig.Companion.TestContainerInitializer::class])
 class IntegrationTestBase {
 
     @Autowired

@@ -1,13 +1,13 @@
 package com.example.core
 
+import com.example.core.support.IntegrationTestBase
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
 
-@SpringBootTest
-class CoreApplicationTests {
+class CoreApplicationTests: IntegrationTestBase() {
 
-	@Test
-	fun contextLoads() {
-	}
+    @Test
+    fun contextLoads() {
+    }
 
 }

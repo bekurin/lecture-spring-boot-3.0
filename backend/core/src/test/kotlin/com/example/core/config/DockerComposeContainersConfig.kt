@@ -10,13 +10,18 @@ import org.testcontainers.containers.wait.strategy.Wait
 import java.io.File
 
 @Configuration
-class DockerComposeConatinersConfig {
+class DockerComposeContainersConfig {
     companion object {
         @ClassRule
         val environment = DockerComposeContainer(File("./src/test/resources/docker-compose.yml"))
                 .withExposedService(
                         TestContainersType.MASTER_DB.serviceName,
                         TestContainersType.MASTER_DB.port,
+                        Wait.forListeningPort()
+                )
+                .withExposedService(
+                        TestContainersType.SLAVE_DB.serviceName,
+                        TestContainersType.SLAVE_DB.port,
                         Wait.forListeningPort()
                 )
 
@@ -32,8 +37,10 @@ class DockerComposeConatinersConfig {
             override fun initialize(applicationContext: ConfigurableApplicationContext) {
                 TestPropertySourceUtils.addInlinedPropertiesToEnvironment(
                         applicationContext,
-                        "spring.datasource.hikari.master.jdbc-url=" +
+                        "spring.datasource.master.hikari.jdbc-url=" +
                                 "jdbc:mysql://${getServiceHostAndPortBy(TestContainersType.MASTER_DB)}/core",
+                        "spring.datasource.slave.hikari.jdbc-url=" +
+                                "jdbc:mysql://${getServiceHostAndPortBy(TestContainersType.SLAVE_DB)}/core"
                 )
             }
 
