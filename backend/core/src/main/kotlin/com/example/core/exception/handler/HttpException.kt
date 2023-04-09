@@ -1,5 +1,5 @@
 package com.example.core.exception.handler
 
-open class CustomException(
+open class HttpException(
         message: String? = null
 ) : RuntimeException(message)
