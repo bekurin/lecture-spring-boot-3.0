@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice
 import java.time.LocalDateTime
 
 @RestControllerAdvice
-class CustomExceptionHandler {
+class HttpExceptionHandler {
     @ExceptionHandler(HttpException::class)
     fun handlerHttpException(exception: HttpException): ResponseEntity<ErrorResponse> {
         val responseStatus = exception::class.annotations
