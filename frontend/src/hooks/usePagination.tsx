@@ -5,21 +5,27 @@ export interface Pagination {
     size: number
 }
 
-const usePagination = () => {
-    const [searchParams, setSearchParams] = useSearchParams()
-    const pagination = {
-        page: parseInt(searchParams.get('page') || '0'),
-        size: parseInt(searchParams.get('size') || '20')
-    }
-
-    const setPagination = (newPagination: Pagination) => {
-        setSearchParams({
-            page: `${newPagination.page}`,
-            size: `${newPagination.size}`
-        })
-    }
-
-    return {pagination, setPagination}
+export interface Paginate {
+    page: number,
+    size: number
 }
 
-export default usePagination
+export const usePaginate = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const paginate = {
+    page: parseInt(searchParams.get("page") || "0"),
+    size: parseInt(searchParams.get("size") || "20"),
+  };
+
+  const setPaginate = (paginate: Paginate) => {
+    Object.entries(paginate).map(([key, value]) => {
+      searchParams.set(key, `${value}`);
+    });
+    setSearchParams(searchParams);
+  };
+
+  return {
+    paginate,
+    setPaginate,
+  };
+};
