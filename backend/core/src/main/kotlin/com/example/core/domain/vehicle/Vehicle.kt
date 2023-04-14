@@ -10,11 +10,11 @@ class Vehicle(
         seat: Int,
 ) : BaseEntity() {
     @Column(nullable = false)
-    var name = name
+    var name: String = name
         protected set
 
     @Column(nullable = false)
-    var seat = seat
+    var seat: Int = seat
         protected set
 
 }

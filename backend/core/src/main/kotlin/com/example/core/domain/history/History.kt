@@ -5,10 +5,11 @@ import jakarta.persistence.Entity
 
 @Entity
 class History(
-        var memberId: Long,
-        var vehicleId: Long,
-        var startSpotId: Long,
-        var endSpotId: Long,
-        var utilizationMinute: Long
+        memberId: Long,
+        vehicleId: Long,
+        startSpotId: Long,
+        endSpotId: Long,
+        utilizationMinute: Long
 ) : BaseEntity() {
+
 }

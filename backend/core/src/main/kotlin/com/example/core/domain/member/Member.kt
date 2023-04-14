@@ -12,12 +12,12 @@ class Member(
         state: ReservationState
 ) : BaseEntity() {
     @Column(nullable = false)
-    var phone = phone
+    var phone: String = phone
         protected set
 
     @Column(nullable = false)
     @Enumerated(value = EnumType.STRING)
-    var state = state
+    var state: ReservationState = state
         protected set
 }
 
