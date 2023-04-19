@@ -9,10 +9,10 @@ import jakarta.persistence.OneToMany
 
 @Entity
 class Route(
-        spots: List<Spot> = listOf()
+    spots: MutableList<Spot> = mutableListOf()
 ) : BaseEntity() {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "spot")
-    var spots: List<Spot> = spots
+    var spots: MutableList<Spot> = spots
         protected set
 
 }
