@@ -21,7 +21,6 @@ class RouteService(
     @Transactional
     fun createRoute(spotList: List<SpotRequest>): RouteResponse {
         val route = Route(spotList.map { Spot(it.name, position = it.position) }.toMutableList())
-        println()
         val savedRoute = routeRepository.save(route)
         return RouteResponse(savedRoute)
     }
