@@ -1,6 +1,6 @@
 package com.backend.core.domain.vehicle
 
-import com.example.core.domain.BaseEntity
+import com.backend.core.domain.BaseEntity
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 

@@ -1,7 +1,7 @@
 package com.backend.core.domain.spot
 
-import com.example.core.domain.BaseEntity
-import com.example.core.domain.route.Route
+import com.backend.core.domain.BaseEntity
+import com.backend.core.domain.route.Route
 import jakarta.persistence.*
 
 @Entity

@@ -1,7 +1,7 @@
 package com.backend.core.config
 
-import com.example.core.exception.InternalServerException
-import com.example.core.service.HelloService
+import com.backend.core.exception.InternalServerException
+import com.backend.core.service.HelloService
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.HttpStatusCode

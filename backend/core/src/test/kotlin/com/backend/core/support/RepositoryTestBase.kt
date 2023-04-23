@@ -1,6 +1,6 @@
 package com.backend.core.support
 
-import com.example.core.config.DockerComposeContainersConfig
+import com.backend.core.config.DockerComposeContainersConfig
 import jakarta.persistence.EntityManager
 import jakarta.transaction.Transactional
 import org.springframework.beans.factory.annotation.Autowired

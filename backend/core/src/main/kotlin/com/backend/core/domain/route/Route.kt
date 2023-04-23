@@ -1,7 +1,7 @@
 package com.backend.core.domain.route
 
-import com.example.core.domain.BaseEntity
-import com.example.core.domain.spot.Spot
+import com.backend.core.domain.BaseEntity
+import com.backend.core.domain.spot.Spot
 import jakarta.persistence.Entity
 import jakarta.persistence.FetchType
 import jakarta.persistence.OneToMany

@@ -1,6 +1,6 @@
 package com.backend.core.controller
 
-import com.example.core.exception.ClientBadRequestException
+import com.backend.core.exception.ClientBadRequestException
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
 
