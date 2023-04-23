@@ -1,0 +1,30 @@
+### 모든 경로 조회
+GET http://localhost:8080/v1/routes/page/0?size=20
+
+### 주어진 스팟을 사용하여 경로 생성
+POST http://localhost:8080/v1/route
+Content-Type: application/json
+
+[
+  {
+    "name": "스팟 1",
+    "position": {
+      "latitude": 23.45,
+      "longitude": 24.54
+    }
+  },
+  {
+    "name": "스팟 2",
+    "position": {
+      "latitude": 23.54,
+      "longitude": 25.54
+    }
+  },
+  {
+    "name": "스팟 3",
+    "position": {
+      "latitude": 43.54,
+      "longitude": 25.54
+    }
+  }
+]

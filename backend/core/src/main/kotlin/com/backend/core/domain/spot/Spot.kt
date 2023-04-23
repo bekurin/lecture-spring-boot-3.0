@@ -6,15 +6,15 @@ import jakarta.persistence.*
 
 @Entity
 class Spot(
-        name: String,
-        route: Route,
-        position: Position
+    name: String,
+    route: Route = Route(),
+    position: Position
 ) : BaseEntity() {
     @Column(nullable = false)
     var name: String = name
         protected set
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
     @JoinColumn(name = "route_id")
     var route: Route = route
         protected set
@@ -27,6 +27,6 @@ class Spot(
 
 @Embeddable
 data class Position(
-        var latitude: Double,
-        var longitude: Double,
+    var latitude: Double,
+    var longitude: Double,
 )
