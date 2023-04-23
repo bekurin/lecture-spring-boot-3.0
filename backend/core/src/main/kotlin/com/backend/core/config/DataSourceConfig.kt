@@ -11,22 +11,23 @@ import javax.sql.DataSource
 @Configuration
 class DataSourceConfig {
 
+    //TODO: TransactionalContext의 readOnly 관련 함수를 디버깅하여 writer, readonly가 정상적으로 동작하는지 확인해야한다.
     @Primary
     @Bean
-    @ConfigurationProperties("spring.datasource.master.hikari")
-    fun masterDataSource(): DataSource {
+    @ConfigurationProperties("spring.datasource.write.hikari")
+    fun writeDataSource(): DataSource {
         return DataSourceBuilder
-                .create()
-                .type(HikariDataSource::class.java)
-                .build()
+            .create()
+            .type(HikariDataSource::class.java)
+            .build()
     }
 
-    @Bean(name = ["slaveDataSource"])
-    @ConfigurationProperties("spring.datasource.slave.hikari")
-    fun slaveDataSource(): DataSource {
+    @Bean(name = ["readOnlyDataSource"])
+    @ConfigurationProperties("spring.datasource.read-only.hikari")
+    fun readOnlyDataSource(): DataSource {
         return DataSourceBuilder
-                .create()
-                .type(HikariDataSource::class.java)
-                .build()
+            .create()
+            .type(HikariDataSource::class.java)
+            .build()
     }
 }

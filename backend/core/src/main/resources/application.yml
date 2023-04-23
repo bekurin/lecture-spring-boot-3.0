@@ -1,11 +1,11 @@
 spring:
   datasource:
-    master:
+    write:
       hikari:
         jdbc-url: jdbc:mysql://localhost:3306/core
         username: root
         password:
-    slave:
+    read-only:
       hikari:
         jdbc-url: jdbc:mysql://localhost:3307/core
         username: root

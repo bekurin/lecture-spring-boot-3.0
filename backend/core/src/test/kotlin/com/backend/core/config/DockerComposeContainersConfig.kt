@@ -15,14 +15,14 @@ class DockerComposeContainersConfig {
         @ClassRule
         val environment = DockerComposeContainer(File("./src/test/resources/docker-compose.yml"))
                 .withExposedService(
-                        TestContainersType.MASTER_DB.serviceName,
-                        TestContainersType.MASTER_DB.port,
-                        Wait.forListeningPort()
+                    TestContainersType.WRITE.serviceName,
+                    TestContainersType.WRITE.port,
+                    Wait.forListeningPort()
                 )
                 .withExposedService(
-                        TestContainersType.SLAVE_DB.serviceName,
-                        TestContainersType.SLAVE_DB.port,
-                        Wait.forListeningPort()
+                    TestContainersType.READONLY.serviceName,
+                    TestContainersType.READONLY.port,
+                    Wait.forListeningPort()
                 )
 
         init {
@@ -36,11 +36,11 @@ class DockerComposeContainersConfig {
         class TestContainerInitializer : ApplicationContextInitializer<ConfigurableApplicationContext> {
             override fun initialize(applicationContext: ConfigurableApplicationContext) {
                 TestPropertySourceUtils.addInlinedPropertiesToEnvironment(
-                        applicationContext,
-                        "spring.datasource.master.hikari.jdbc-url=" +
-                                "jdbc:mysql://${getServiceHostAndPortBy(TestContainersType.MASTER_DB)}/core",
-                        "spring.datasource.slave.hikari.jdbc-url=" +
-                                "jdbc:mysql://${getServiceHostAndPortBy(TestContainersType.SLAVE_DB)}/core"
+                    applicationContext,
+                    "spring.datasource.write.hikari.jdbc-url=" +
+                            "jdbc:mysql://${getServiceHostAndPortBy(TestContainersType.WRITE)}/core",
+                    "spring.datasource.read-only.hikari.jdbc-url=" +
+                            "jdbc:mysql://${getServiceHostAndPortBy(TestContainersType.READONLY)}/core"
                 )
             }
 

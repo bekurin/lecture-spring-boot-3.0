@@ -1,10 +1,10 @@
 package com.backend.core.config
 
 enum class TestContainersType(
-        val serviceName: String,
-        val port: Int,
-        private val description: String
+    val serviceName: String,
+    val port: Int,
+    private val description: String
 ) {
-    MASTER_DB("masterDB", 3306, "마스터 디비 서비스명과 포트입니다"),
-    SLAVE_DB("slaveDB", 3306, "슬레이브 디비 서비스명과 포트입니다")
+    WRITE("write", 3306, "쓰기 전용 DB 서비스명과 포트입니다"),
+    READONLY("read-only", 3306, "읽기 전용 DB 서비스명과 포트입니다")
 }

@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  masterDB:
+  write:
     image: mysql:8.0
     restart: always
     environment:
@@ -16,7 +16,7 @@ services:
       - --lower_case_table_names=1
       - --character-set-server=utf8mb4
       - --collation-server=utf8mb4_unicode_ci
-  slaveDB:
+  read-only:
     image: mysql:8.0
     restart: always
     environment:
