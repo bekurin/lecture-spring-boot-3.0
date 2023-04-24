@@ -22,8 +22,8 @@ class RouteController(
 
     @PostMapping("/route")
     fun createRoute(
-        @RequestBody spotRequestList: List<SpotRequest>
+        @RequestBody request: List<SpotRequest>
     ): RouteResponse {
-        return routeService.createRoute(spotRequestList)
+        return routeService.createRoute(request)
     }
 }

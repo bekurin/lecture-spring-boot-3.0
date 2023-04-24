@@ -15,5 +15,4 @@ class Route(
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "route", cascade = [CascadeType.ALL])
     var spots: MutableList<Spot> = spots
         protected set
-
 }
