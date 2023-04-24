@@ -1,8 +1,8 @@
 ### 모든 경로 조회
-GET http://localhost:8080/v1/routes/page/0?size=20
+GET {{baseUrl}}/v1/routes/page/0?size=20
 
 ### 주어진 스팟을 사용하여 경로 생성
-POST http://localhost:8080/v1/route
+POST {{baseUrl}}/v1/route
 Content-Type: application/json
 
 [
