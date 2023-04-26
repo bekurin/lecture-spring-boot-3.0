@@ -7,8 +7,7 @@ import com.backend.core.domain.route.Route
 import com.backend.core.domain.route.repository.RouteRepository
 import com.backend.core.domain.spot.Spot
 import com.backend.core.exception.ClientBadRequestException
-import org.springframework.data.domain.PageRequest
-import org.springframework.data.domain.Sort
+import com.backend.core.util.Pagination
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
@@ -27,7 +26,7 @@ class RouteService(
 
     fun findAllPagedRoute(page: Int, size: Int): PagedResponse<RouteResponse> {
         validatePayload(page, size)
-        val pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "id"))
+        val pageable = Pagination.ofSortByIdDesc(page, size)
         val findRouteList = routeRepository.findAll(pageable)
         return PagedResponse(findRouteList.map { RouteResponse(it) })
     }

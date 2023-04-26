@@ -4,7 +4,7 @@ import com.backend.core.controller.response.PagedResponse
 import com.backend.core.controller.response.SpotResponse
 import com.backend.core.domain.spot.Spot
 import com.backend.core.domain.spot.repository.SpotRepository
-import com.backend.core.util.getSortByIdDescPageable
+import com.backend.core.util.Pagination
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
@@ -21,7 +21,7 @@ class SpotService(
     }
 
     fun findAllPagedSpot(page: Int, size: Int): PagedResponse<SpotResponse> {
-        val pageable = getSortByIdDescPageable(page, size)
+        val pageable = Pagination.ofSortByIdDesc(page, size)
         val spotList = spotRepository.findAll(pageable)
         return PagedResponse(spotList.map { SpotResponse(it) })
     }
