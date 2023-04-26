@@ -17,5 +17,5 @@ class IntegrationTestBase {
     @Autowired
     protected lateinit var mvc: MockMvc
 
-    protected val objectMapper: ObjectMapper = jacksonObjectMapper()
+    protected val jacksonObjectMapper: ObjectMapper = jacksonObjectMapper()
 }
