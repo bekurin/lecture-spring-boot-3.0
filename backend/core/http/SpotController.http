@@ -1,0 +1,2 @@
+### 모든 거점 조회
+GET {{baseUrl}}/v1/spots/page/0?size=20
