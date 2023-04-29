@@ -1,9 +1,8 @@
 package com.backend.core.domain.spot
 
-import com.backend.core.annotation.Masked
-import com.backend.core.converter.MaskedConverter
 import com.backend.core.domain.BaseEntity
 import com.backend.core.domain.route.Route
+import com.backend.core.util.masking.MarkerConvert
 import jakarta.persistence.*
 
 @Entity
@@ -13,8 +12,7 @@ class Spot(
     position: Position
 ) : BaseEntity() {
     @Column(nullable = false)
-    @Masked("hello! ")
-    @Convert(converter = MaskedConverter::class)
+    @MarkerConvert("name")
     var name: String = name
         protected set
 
