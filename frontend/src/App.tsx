@@ -1,11 +1,11 @@
-import Hello from './pages/hello/Home';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import RouteContainer from './pages/route/RouteContainer';
 
 function App() {
   return (
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Hello/>}/>
+          <Route path="/" element={<RouteContainer/>}/>
         </Routes>
       </BrowserRouter>
   );
