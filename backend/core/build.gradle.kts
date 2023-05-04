@@ -49,7 +49,7 @@ dependencies {
 	kapt("com.querydsl:querydsl-apt:$querydslVersion:jakarta")
 
 	// local library
-	implementation(files("libs/obsure-1.0-SNAPSHOT.jar"))
+	implementation(files("libs/ensure-1.0-SNAPSHOT.jar"))
 }
 
 tasks.withType<KotlinCompile> {

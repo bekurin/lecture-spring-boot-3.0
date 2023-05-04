@@ -12,10 +12,10 @@ export interface IRoute {
 }
 
 export interface RouteCallbacks {
-    fetchPagedRoute: (payload: RoutePayload, paginate: Paginate) => void;
+    fetchPagedRoute: (payload: RouteQueryParams, paginate: Paginate) => void;
 }
 
-export interface RoutePayload {
+export interface RouteQueryParams {
     routeId: number | null;
     routeName: string | null;
 }

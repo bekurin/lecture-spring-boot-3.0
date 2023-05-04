@@ -18,7 +18,7 @@ class WebClientConfig {
             .defaultStatusHandler(HttpStatusCode::isError) { response ->
                 response.bodyToMono(InternalServerException::class.java)
             }
-            .baseUrl("<baseUrl>")
+            .baseUrl("https://www.google.com")
             .build()
         val serviceProxyFactory = HttpServiceProxyFactory.builder(WebClientAdapter.forClient(client)).build()
         return serviceProxyFactory.createClient(HelloService::class.java)

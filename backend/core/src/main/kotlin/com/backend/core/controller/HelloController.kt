@@ -1,19 +1,17 @@
 package com.backend.core.controller
 
-import com.backend.core.exception.ClientBadRequestException
+import com.backend.core.service.HelloService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
+import reactor.core.publisher.Mono
 
 @RestController
-class HelloController {
+class HelloController(
+    private val helloService: HelloService
+) {
 
     @GetMapping("/hello")
-    fun doHello(): Map<String, String> {
-        return mapOf("message" to "hello")
-    }
-
-    @GetMapping("/exception")
-    fun throwException() {
-        throw ClientBadRequestException("테스트 메시지를 입력합니다")
+    fun doHello(): Mono<String> {
+        return helloService.getGoogle()
     }
 }
