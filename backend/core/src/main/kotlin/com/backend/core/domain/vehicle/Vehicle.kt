@@ -6,15 +6,15 @@ import jakarta.persistence.Entity
 
 @Entity
 class Vehicle(
-        name: String,
-        seat: Int,
+    name: String,
+    capacity: Int,
 ) : BaseEntity() {
     @Column(nullable = false)
     var name: String = name
         protected set
 
     @Column(nullable = false)
-    var seat: Int = seat
+    var capacity: Int = capacity
         protected set
 
 }

@@ -6,7 +6,6 @@ import com.backend.core.controller.response.RouteResponse
 import com.backend.core.domain.route.Route
 import com.backend.core.domain.route.repository.RouteRepository
 import com.backend.core.domain.spot.Spot
-import com.backend.core.exception.ClientBadRequestException
 import com.backend.core.util.Pagination
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -25,18 +24,8 @@ class RouteService(
     }
 
     fun findAllPagedRoute(page: Int, size: Int): PagedResponse<RouteResponse> {
-        validatePayload(page, size)
-        val pageable = Pagination.ofSortByIdDesc(page, size)
+        val pageable = Pagination.ofSortByIdDescOrThrow(page, size)
         val findRouteList = routeRepository.findAll(pageable)
         return PagedResponse(findRouteList.map { RouteResponse(it) })
-    }
-
-    private fun validatePayload(page: Int, size: Int) {
-        if (size < 1) {
-            throw ClientBadRequestException("size는 1보다 작을 수 없습니다")
-        }
-        if (page < 0) {
-            throw ClientBadRequestException("page는 0보다 작을 수 없습니다")
-        }
     }
 }

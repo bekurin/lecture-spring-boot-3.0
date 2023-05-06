@@ -1,0 +1,2 @@
+### 모든 운송 수단 조회
+GET {{baseUrl}}/v1/vehicles/page/0?size=20
