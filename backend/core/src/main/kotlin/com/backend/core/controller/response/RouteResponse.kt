@@ -1,6 +1,6 @@
 package com.backend.core.controller.response
 
-import com.backend.core.domain.route.Route
+import com.backend.core.domain.taxi.route.Route
 
 data class RouteResponse(
     val id: Long,

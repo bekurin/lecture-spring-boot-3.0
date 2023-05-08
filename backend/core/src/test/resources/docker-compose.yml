@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  write:
+  master:
     image: mysql:8.0
     restart: always
     environment:
@@ -27,3 +27,33 @@ services:
       - --lower_case_table_names=1
       - --character-set-server=utf8mb4
       - --collation-server=utf8mb4_unicode_ci
+  second:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_HOST: '%'
+      MYSQL_DATABASE: 'second'
+      MYSQL_ROOT_USER: 'root'
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      TZ: Asia/Seoul
+    command:
+      - --lower_case_table_names=1
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+  kafka:
+    image: bitnami/kafka:3.4.0
+    container_name: kafka
+    environment:
+      KAFKA_CREATE_TOPICS: "reservation:1:1"
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      ALLOW_PLAINTEXT_LISTENER: yes
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+      KAFKA_ADVERTISED_HOST_NAME: 127.0.0.1
+      KAFKA_ADVERTISED_PORT: 9092
+    depends_on:
+      - zookeeper
+  zookeeper:
+    image: bitnami/zookeeper:3.8
+    container_name: zookeeper
+    environment:
+      ALLOW_ANONYMOUS_LOGIN: yes

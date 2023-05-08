@@ -3,9 +3,9 @@ package com.backend.core.service
 import com.backend.core.controller.request.SpotRequest
 import com.backend.core.controller.response.PagedResponse
 import com.backend.core.controller.response.RouteResponse
-import com.backend.core.domain.route.Route
-import com.backend.core.domain.route.repository.RouteRepository
-import com.backend.core.domain.spot.Spot
+import com.backend.core.domain.taxi.route.Route
+import com.backend.core.domain.taxi.route.repository.RouteRepository
+import com.backend.core.domain.taxi.spot.Spot
 import com.backend.core.util.Pagination
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional

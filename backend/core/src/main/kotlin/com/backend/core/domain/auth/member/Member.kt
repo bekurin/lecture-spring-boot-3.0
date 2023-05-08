@@ -1,4 +1,4 @@
-package com.backend.core.domain.member
+package com.backend.core.domain.auth.member
 
 import com.backend.core.domain.BaseEntity
 import converter.NameConverter

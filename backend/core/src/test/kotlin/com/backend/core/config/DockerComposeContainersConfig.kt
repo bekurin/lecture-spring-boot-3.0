@@ -14,34 +14,47 @@ class DockerComposeContainersConfig {
     companion object {
         @ClassRule
         val environment = DockerComposeContainer(File("./src/test/resources/docker-compose.yml"))
-                .withExposedService(
-                    TestContainersType.WRITE.serviceName,
-                    TestContainersType.WRITE.port,
-                    Wait.forListeningPort()
-                )
-                .withExposedService(
-                    TestContainersType.READONLY.serviceName,
-                    TestContainersType.READONLY.port,
-                    Wait.forListeningPort()
-                )
+            .withExposedService(
+                TestContainersType.MASTER.serviceName,
+                TestContainersType.MASTER.port,
+                Wait.forListeningPort()
+            )
+            .withExposedService(
+                TestContainersType.READONLY.serviceName,
+                TestContainersType.READONLY.port,
+                Wait.forListeningPort()
+            )
+            .withExposedService(
+                TestContainersType.SECOND.serviceName,
+                TestContainersType.SECOND.port,
+                Wait.forListeningPort()
+            )
 
         init {
             environment.start()
         }
 
         private fun getServiceHostAndPortBy(type: TestContainersType): String {
-            return "${environment.getServiceHost(type.serviceName, type.port)}:${environment.getServicePort(type.serviceName, type.port)}"
+            return "${
+                environment.getServiceHost(
+                    type.serviceName,
+                    type.port
+                )
+            }:${environment.getServicePort(type.serviceName, type.port)}"
         }
 
         class TestContainerInitializer : ApplicationContextInitializer<ConfigurableApplicationContext> {
             override fun initialize(applicationContext: ConfigurableApplicationContext) {
                 TestPropertySourceUtils.addInlinedPropertiesToEnvironment(
                     applicationContext,
-                    "spring.datasource.write.hikari.jdbc-url=" +
-                            "jdbc:mysql://${getServiceHostAndPortBy(TestContainersType.WRITE)}/core",
-                    "spring.datasource.read-only.hikari.jdbc-url=" +
-                            "jdbc:mysql://${getServiceHostAndPortBy(TestContainersType.READONLY)}/core"
-                )
+                    "spring.datasource.first.master.hikari.jdbc-url=" +
+                            "jdbc:mysql://${getServiceHostAndPortBy(TestContainersType.MASTER)}/core",
+                    "spring.datasource.first.read-only.hikari.jdbc-url=" +
+                            "jdbc:mysql://${getServiceHostAndPortBy(TestContainersType.READONLY)}/core",
+                    "spring.datasource.second.master.hikari.jdbc-url=" +
+                            "jdbc:mysql://${getServiceHostAndPortBy(TestContainersType.SECOND)}/second",
+
+                    )
             }
 
         }

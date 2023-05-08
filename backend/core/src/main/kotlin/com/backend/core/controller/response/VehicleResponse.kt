@@ -1,6 +1,6 @@
 package com.backend.core.controller.response
 
-import com.backend.core.domain.vehicle.Vehicle
+import com.backend.core.domain.taxi.vehicle.Vehicle
 import java.time.LocalDateTime
 
 data class VehicleResponse(
