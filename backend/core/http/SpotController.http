@@ -1,2 +1,14 @@
 ### 모든 거점 조회
 GET {{baseUrl}}/v1/spots/page/0?size=20
+
+### 거점 하나 생성
+POST {{baseUrl}}/v1/spot
+Content-Type: application/json
+
+{
+  "name": "",
+  "position": {
+    "latitude": 23.45,
+    "longitude": 24.54
+  }
+}

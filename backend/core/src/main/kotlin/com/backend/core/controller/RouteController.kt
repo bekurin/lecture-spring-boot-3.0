@@ -5,6 +5,7 @@ import com.backend.core.controller.response.PagedResponse
 import com.backend.core.controller.response.RouteResponse
 import com.backend.core.service.RouteService
 import com.backend.core.util.Constants
+import jakarta.validation.Valid
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -23,7 +24,7 @@ class RouteController(
 
     @PostMapping("/route")
     fun createRoute(
-        @RequestBody request: List<SpotRequest>
+        @RequestBody request: List<@Valid SpotRequest>
     ): RouteResponse {
         return routeService.createRoute(request)
     }

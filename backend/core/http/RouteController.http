@@ -7,7 +7,7 @@ Content-Type: application/json
 
 [
   {
-    "name": "스팟 1",
+    "name": "",
     "position": {
       "latitude": 23.45,
       "longitude": 24.54

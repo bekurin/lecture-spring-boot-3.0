@@ -1,9 +1,11 @@
 package com.backend.core.controller
 
+import com.backend.core.controller.request.SpotRequest
 import com.backend.core.controller.response.PagedResponse
 import com.backend.core.controller.response.SpotResponse
 import com.backend.core.service.SpotService
 import com.backend.core.util.Constants
+import jakarta.validation.Valid
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -13,8 +15,10 @@ class SpotController(
 ) {
 
     @PostMapping("/spot")
-    fun createSpot() {
-        //TODO: 하나의 스팟을 생성하는 API이다.
+    fun createSpot(
+        @Valid @RequestBody request: SpotRequest
+    ): SpotRequest {
+        return request
     }
 
     @PostMapping("/spots")
