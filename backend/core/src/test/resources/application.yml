@@ -1,22 +1,15 @@
 spring:
   datasource:
-    first:
-      master:
-        hikari:
-          jdbc-url: jdbc:mysql://localhost:3306/core
-          username: root
-          password:
-      read-only:
-        hikari:
-          jdbc-url: jdbc:mysql://localhost:3307/core
-          username: root
-          password:
-    second:
-      master:
-        hikari:
-          jdbc-url: jdbc:mysql://localhost:3308/second
-          username: root
-          password:
+    master:
+      hikari:
+        jdbc-url: jdbc:mysql://localhost:3306/core
+        username: root
+        password:
+    read-only:
+      hikari:
+        jdbc-url: jdbc:mysql://localhost:3307/core
+        username: root
+        password:
   jpa:
     properties:
       hibernate:
@@ -26,14 +19,14 @@ spring:
         format_sql: true
         dialect: org.hibernate.dialect.MySQLDialect
         physical_naming_strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
-  kafka:
-    consumer:
-      bootstrap-servers: localhost:9092
-      group-id: reservation_id
-      auto-offset-reset: earliest
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
-    producer:
-      bootstrap-servers: localhost:9092
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+#  kafka:
+#    consumer:
+#      bootstrap-servers: localhost:9092
+#      group-id: reservation_id
+#      auto-offset-reset: earliest
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+#    producer:
+#      bootstrap-servers: localhost:9092
+#      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer

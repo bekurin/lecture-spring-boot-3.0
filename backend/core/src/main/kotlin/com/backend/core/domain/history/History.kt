@@ -1,4 +1,4 @@
-package com.backend.core.domain.taxi.history
+package com.backend.core.domain.history
 
 import com.backend.core.domain.BaseEntity
 import jakarta.persistence.Column

@@ -1,7 +1,7 @@
 package com.backend.core.controller.response
 
-import com.backend.core.domain.taxi.spot.Position
-import com.backend.core.domain.taxi.spot.Spot
+import com.backend.core.domain.spot.Position
+import com.backend.core.domain.spot.Spot
 import com.backend.core.util.Marker
 import constant.ProcessType
 

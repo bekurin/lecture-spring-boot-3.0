@@ -1,7 +1,7 @@
-package com.backend.core.domain.taxi.route
+package com.backend.core.domain.route
 
 import com.backend.core.domain.BaseEntity
-import com.backend.core.domain.taxi.spot.Spot
+import com.backend.core.domain.spot.Spot
 import jakarta.persistence.CascadeType
 import jakarta.persistence.Entity
 import jakarta.persistence.FetchType

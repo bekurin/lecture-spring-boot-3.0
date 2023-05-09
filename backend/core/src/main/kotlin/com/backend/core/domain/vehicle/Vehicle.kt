@@ -1,4 +1,4 @@
-package com.backend.core.domain.taxi.vehicle
+package com.backend.core.domain.vehicle
 
 import com.backend.core.domain.BaseEntity
 import jakarta.persistence.Column
