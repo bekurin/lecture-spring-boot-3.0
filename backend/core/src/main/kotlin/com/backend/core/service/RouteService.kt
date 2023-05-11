@@ -5,7 +5,6 @@ import com.backend.core.controller.response.PagedResponse
 import com.backend.core.controller.response.RouteResponse
 import com.backend.core.domain.route.Route
 import com.backend.core.domain.route.repository.RouteRepository
-import com.backend.core.domain.spot.Spot
 import com.backend.core.util.Pagination
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -18,7 +17,7 @@ class RouteService(
 
     @Transactional
     fun createRoute(spotList: List<SpotRequest>): RouteResponse {
-        val route = Route(spotList.map { Spot(it.name, position = it.position) }.toMutableList())
+        val route = Route(spotList.map { it.toEntity() }.toMutableList())
         val savedRoute = routeRepository.save(route)
         return RouteResponse(savedRoute)
     }

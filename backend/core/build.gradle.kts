@@ -86,7 +86,7 @@ tasks.register<Test>("integrationTest") {
 
 tasks.register<Test>("unitTest") {
 	filter {
-		includeTestsMatching("Test")
+		includeTestsMatching("*Test")
 	}
 }
 

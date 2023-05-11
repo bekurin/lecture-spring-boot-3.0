@@ -6,8 +6,10 @@ import com.backend.core.controller.response.RouteResponse
 import com.backend.core.service.RouteService
 import com.backend.core.util.Constants
 import jakarta.validation.Valid
+import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
 
+@Validated
 @RestController
 @RequestMapping("/v1")
 class RouteController(
@@ -24,7 +26,7 @@ class RouteController(
 
     @PostMapping("/route")
     fun createRoute(
-        @RequestBody request: List<@Valid SpotRequest>
+        @RequestBody @Valid request: List<SpotRequest>
     ): RouteResponse {
         return routeService.createRoute(request)
     }

@@ -9,7 +9,7 @@ Content-Type: application/json
   {
     "name": "",
     "position": {
-      "latitude": 23.45,
+      "latitude": -1,
       "longitude": 24.54
     }
   },
