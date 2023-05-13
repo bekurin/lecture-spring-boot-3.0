@@ -24,6 +24,11 @@ class RouteController(
         return routeService.findAllPagedRoute(page, size)
     }
 
+    @GetMapping("/routes")
+    fun exportRoutesAsExcel() {
+
+    }
+
     @PostMapping("/route")
     fun createRoute(
         @RequestBody @Valid request: List<SpotRequest>

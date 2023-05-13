@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 val testcontainersVersion: String = "1.17.6"
 val mysqlConnectorVersion: String = "8.0.32"
 val querydslVersion: String = "5.0.0"
+val apachePoi: String = "5.2.3"
 
 plugins {
 	id("org.springframework.boot") version "3.0.5"
@@ -51,6 +52,10 @@ dependencies {
 
 	// local library
 	implementation(files("libs/ensure-1.0-SNAPSHOT.jar"))
+
+	// excel
+	implementation("org.apache.poi:poi:$apachePoi")
+
 }
 
 tasks.withType<KotlinCompile> {
