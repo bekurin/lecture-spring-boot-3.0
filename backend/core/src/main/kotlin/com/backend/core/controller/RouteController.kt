@@ -6,6 +6,10 @@ import com.backend.core.controller.response.RouteResponse
 import com.backend.core.service.RouteService
 import com.backend.core.util.Constants
 import jakarta.validation.Valid
+import org.springframework.core.io.InputStreamResource
+import org.springframework.http.HttpHeaders
+import org.springframework.http.MediaType
+import org.springframework.http.ResponseEntity
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
 
@@ -25,8 +29,12 @@ class RouteController(
     }
 
     @GetMapping("/routes")
-    fun exportRoutesAsExcel() {
-
+    fun exportRoutesAsExcel(): ResponseEntity<InputStreamResource> {
+        return ResponseEntity
+            .ok()
+            .header(HttpHeaders.CONTENT_DISPOSITION, "attachment;")
+            .contentType(MediaType.APPLICATION_OCTET_STREAM)
+            .body(routeService.exportToExcel())
     }
 
     @PostMapping("/route")
