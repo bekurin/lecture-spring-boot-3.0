@@ -2,13 +2,14 @@ package com.backend.core.domain.member
 
 import com.backend.core.domain.BaseEntity
 import converter.NameConverter
-import jakarta.persistence.*
+import jakarta.persistence.Column
+import jakarta.persistence.Convert
+import jakarta.persistence.Entity
 
 @Entity
 class Member(
     username: String,
     phone: String,
-    state: ReservationState
 ) : BaseEntity() {
 
     @Column(nullable = false)
@@ -19,18 +20,4 @@ class Member(
     @Column(nullable = false)
     var phone: String = phone
         protected set
-
-    @Column(nullable = false)
-    @Enumerated(value = EnumType.STRING)
-    var state: ReservationState = state
-        protected set
-}
-
-enum class ReservationState(
-    private val description: String
-) {
-    DEFAULT("기본"),
-    RESERVATION("예약"),
-    BOARDING("탑승"),
-    COMPLETE("완료")
 }
