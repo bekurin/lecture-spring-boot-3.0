@@ -25,7 +25,7 @@ class RouteService(
     }
 
     fun findAllPagedRoute(page: Int, size: Int): PagedResponse<RouteResponse> {
-        val pageable = Pagination.ofSortByIdDescOrThrow(page, size)
+        val pageable = Pagination.ofSortByIdDesc(page, size)
         val findRouteList = routeRepository.findAll(pageable)
         return PagedResponse(findRouteList.map { RouteResponse(it) })
     }

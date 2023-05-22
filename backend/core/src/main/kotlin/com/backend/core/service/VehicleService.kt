@@ -20,7 +20,7 @@ class VehicleService(
     }
 
     fun findAllPagedVehicle(page: Int, size: Int): PagedResponse<VehicleResponse> {
-        val pageable = Pagination.ofSortByIdDescOrThrow(page, size)
+        val pageable = Pagination.ofSortByIdDesc(page, size)
         val vehicleList = vehicleRepository.findAll(pageable)
         return PagedResponse(vehicleList.map { VehicleResponse(it) })
     }

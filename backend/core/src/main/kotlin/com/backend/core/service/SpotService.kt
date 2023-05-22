@@ -21,7 +21,7 @@ class SpotService(
     }
 
     fun findAllPagedSpot(page: Int, size: Int): PagedResponse<SpotResponse> {
-        val pageable = Pagination.ofSortByIdDescOrThrow(page, size)
+        val pageable = Pagination.ofSortByIdDesc(page, size)
         val spotList = spotRepository.findAll(pageable)
         return PagedResponse(spotList.map { SpotResponse(it) })
     }
