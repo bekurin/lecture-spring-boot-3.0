@@ -4,6 +4,8 @@ import { ISpot } from "../../spot/types";
 
 export interface RouteStates {
     pagedRoute: PageResponse<IRoute> | null;
+    queryParams: RouteQueryParams;
+    paginate: Paginate
 }
 
 export interface IRoute {

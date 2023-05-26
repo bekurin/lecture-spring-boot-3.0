@@ -5,7 +5,7 @@ export const usePaginate = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const paginate = {
     page: parseInt(searchParams.get("page") || "0"),
-    size: parseInt(searchParams.get("size") || "20"),
+    size: parseInt(searchParams.get("size") || "20")
   };
 
   const setPaginate = (paginate: Paginate) => {

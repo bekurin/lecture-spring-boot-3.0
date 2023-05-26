@@ -9,7 +9,7 @@ type PropsType = {
 }
 
 const Route = ({states, callbacks}: PropsType) => {
-    const {paginate, setPaginate} = usePaginate();
+    const {paginate, setPaginate} = usePaginate()
     const {queryParams, setQueryParams} = useQueryParams<RouteQueryParams>({
         routeId: null,
         routeName: ""
