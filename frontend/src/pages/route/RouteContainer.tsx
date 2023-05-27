@@ -4,9 +4,10 @@ import { IRoute, RouteCallbacks, RouteQueryParams, RouteStates } from "./types";
 import { PageResponse } from "../../apis/PageResponse";
 import { Paginate } from "../../components/types";
 import fetchPagedRouteApi from "../../apis/route/fetchPagedRouteApi";
+import { useRouteStore } from "./stores";
 
 const RouteContainer = () => {
-    const [pagedRoute, setPagedRoute] = useState<PageResponse<IRoute> | null>(null);
+    const [pagedRoute, setPagedRoute] =   useRouteStore()
     
     const fetchPagedRoute =async (
         params: RouteQueryParams,
