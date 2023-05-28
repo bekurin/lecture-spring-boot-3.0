@@ -14,11 +14,25 @@ const {queryParams, setQueryParams} = useQueryParams<RouteQueryParams>({
 })
 const [pagedRoute, setPagedRoute] = useState<PageResponse<IRoute> | null>(null);
 
-export const useRouteStore = create((set) => ({
+interface RouteStates {
+    paginate: Paginate,
+    queryParams: RouteQueryParams,
+    pagedRoute: PageResponse<IRoute> | null
+}
+
+interface RouteCallbacks {
+    updatePaginate: (paginate: Paginate) => void;
+    updateQueryParams: (queryParams: RouteQueryParams) => void;
+    updatePagedRoute: (pagedRoute: PageResponse<IRoute>) => void;
+}
+
+const useRouteStore = create<RouteStates & RouteCallbacks>((set) => ({
     paginate: paginate,
     queryParams: queryParams,
     pagedRoute: pagedRoute,
-    updatePaginate: (paginate: Paginate) => set(() => (setPaginate(paginate))),
-    updateQueryParams: (queryParams: RouteQueryParams) => set(() => setQueryParams(queryParams)),
-    updatePagedRoute: (pagedRoute: PageResponse<IRoute>) => set(() => setPagedRoute(pagedRoute))
+    updatePaginate: (paginate: Paginate) => setPaginate(paginate),
+    updateQueryParams: (queryParams: RouteQueryParams) => setQueryParams(queryParams),
+    updatePagedRoute: (pagedRoute: PageResponse<IRoute>) => setPagedRoute(pagedRoute)
 }))
+
+export default useRouteStore;
