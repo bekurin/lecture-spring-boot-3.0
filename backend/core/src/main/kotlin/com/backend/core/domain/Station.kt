@@ -1,8 +1,5 @@
-package com.backend.core.domain.station
+package com.backend.core.domain
 
-import com.backend.core.domain.BaseEntity
-import com.backend.core.domain.route.Route
-import com.backend.core.domain.spot.Spot
 import jakarta.persistence.*
 import java.time.LocalDateTime
 

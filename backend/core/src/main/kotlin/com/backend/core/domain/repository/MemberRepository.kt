@@ -1,6 +1,6 @@
-package com.backend.core.domain.member.repository
+package com.backend.core.domain.repository
 
-import com.backend.core.domain.member.Member
+import com.backend.core.domain.User
 import org.springframework.data.jpa.repository.JpaRepository
 
-interface MemberRepository: JpaRepository<Member, Long>
+interface MemberRepository : JpaRepository<User, Long>

@@ -1,4 +1,4 @@
-package com.backend.core.controller.response
+package com.backend.core.controller.dto
 
 import org.springframework.data.domain.Page
 

@@ -19,11 +19,6 @@ class DockerComposeContainersConfig {
                 TestContainersType.MASTER.port,
                 Wait.forListeningPort()
             )
-            .withExposedService(
-                TestContainersType.READONLY.serviceName,
-                TestContainersType.READONLY.port,
-                Wait.forListeningPort()
-            )
 
         init {
             environment.start()
@@ -42,14 +37,10 @@ class DockerComposeContainersConfig {
             override fun initialize(applicationContext: ConfigurableApplicationContext) {
                 TestPropertySourceUtils.addInlinedPropertiesToEnvironment(
                     applicationContext,
-                    "spring.datasource.master.hikari.jdbc-url=" +
+                    "spring.datasource.hikari.jdbc-url=" +
                             "jdbc:mysql://${getServiceHostAndPortBy(TestContainersType.MASTER)}/core",
-                    "spring.datasource.read-only.hikari.jdbc-url=" +
-                            "jdbc:mysql://${getServiceHostAndPortBy(TestContainersType.READONLY)}/core",
-
-                    )
+                )
             }
-
         }
     }
 }

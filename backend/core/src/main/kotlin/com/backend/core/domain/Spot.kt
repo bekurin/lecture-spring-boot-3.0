@@ -1,7 +1,5 @@
-package com.backend.core.domain.spot
+package com.backend.core.domain
 
-import com.backend.core.domain.BaseEntity
-import com.backend.core.domain.route.Route
 import jakarta.persistence.Column
 import jakarta.persistence.Embeddable
 import jakarta.persistence.Embedded
@@ -10,7 +8,6 @@ import jakarta.persistence.Entity
 @Entity
 class Spot(
     name: String,
-    route: Route,
     position: Position
 ) : BaseEntity() {
     @Column(nullable = false)

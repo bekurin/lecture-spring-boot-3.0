@@ -1,6 +1,5 @@
-package com.backend.core.domain.scheduler
+package com.backend.core.domain
 
-import com.backend.core.domain.BaseEntity
 import jakarta.persistence.Entity
 
 @Entity

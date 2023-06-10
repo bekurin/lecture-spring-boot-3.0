@@ -1,21 +1,32 @@
-package com.backend.core.domain.ticket
+package com.backend.core.domain
 
-import com.backend.core.domain.BaseEntity
-import jakarta.persistence.Entity
+import jakarta.persistence.*
 
 @Entity
 class Ticket(
-    routeId: Long,
-    departureStationId: Long,
-    arrivalStationId: Long,
+    user: User,
+    departureStation: Station,
+    destinationStation: Station,
+    route: Route,
 ) : BaseEntity() {
-
-    var routeId: Long = routeId
+    @OneToOne(fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
+    @JoinColumn(name = "user_id")
+    var user: User = user
         protected set
 
-    var departureStationId: Long = departureStationId
+    @OneToOne(fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
+    @JoinColumn(name = "station_id")
+    var departureStation: Station = departureStation
         protected set
 
-    var arrivalStationId: Long = arrivalStationId
+//    @OneToOne(fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
+//    @JoinColumn(name = "station_id")
+//    var destinationStation: Station = destinationStation
+//        protected set
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
+    @JoinColumn(name = "route_id")
+    var route: Route = route
         protected set
+
 }

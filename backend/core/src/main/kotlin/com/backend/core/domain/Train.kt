@@ -1,4 +1,10 @@
 package com.backend.core.domain
 
-class Train {
+import jakarta.persistence.Entity
+
+@Entity
+class Train(
+    name: String,
+    capacity: Int,
+) : BaseEntity() {
 }

@@ -1,7 +1,5 @@
-package com.backend.core.domain.route
+package com.backend.core.domain
 
-import com.backend.core.domain.BaseEntity
-import com.backend.core.domain.spot.Spot
 import jakarta.persistence.CascadeType
 import jakarta.persistence.Entity
 import jakarta.persistence.FetchType
@@ -12,7 +10,7 @@ import jakarta.persistence.OneToMany
 class Route(
     name: String,
     delay: Int = 0,
-    spots: MutableList<Spot> = mutableListOf()
+    stations: MutableList<Station> = mutableListOf(),
 ) : BaseEntity() {
 
     var name: String = name
@@ -22,6 +20,6 @@ class Route(
         protected set
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "route", cascade = [CascadeType.ALL])
-    var spots: MutableList<Spot> = spots
+    var stations: MutableList<Station> = stations
         protected set
 }

@@ -1,4 +1,4 @@
-package com.backend.core.domain
+package com.backend.core.support
 
 import com.backend.core.exception.ResourceNotFoundException
 import org.springframework.data.jpa.repository.JpaRepository
