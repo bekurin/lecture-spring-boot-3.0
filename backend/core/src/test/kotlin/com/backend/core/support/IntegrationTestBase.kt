@@ -20,5 +20,7 @@ class IntegrationTestBase {
     protected lateinit var objectMapper: ObjectMapper
 
 //    protected val objectMapper: ObjectMapper = jacksonObjectMapper()
-//        .setAnnotationIntrospector(MarkerAnnotationIntroSpector())
+//        .setAnnotationIntrospector(
+//            MarkerAnnotationIntroSpector() to jacksonObjectMapper().serializationConfig.annotationIntrospector
+//        )
 }
