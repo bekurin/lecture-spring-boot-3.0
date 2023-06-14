@@ -5,6 +5,9 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
+import org.springframework.security.core.authority.SimpleGrantedAuthority
+import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.web.servlet.MockMvc
 
@@ -19,8 +22,17 @@ class IntegrationTestBase {
     @Autowired
     protected lateinit var objectMapper: ObjectMapper
 
-//    protected val objectMapper: ObjectMapper = jacksonObjectMapper()
-//        .setAnnotationIntrospector(
-//            MarkerAnnotationIntroSpector() to jacksonObjectMapper().serializationConfig.annotationIntrospector
-//        )
+    protected fun setAuthorityToSecurityContextHolder(vararg roles: String): Boolean {
+        return try {
+            val authentication = SecurityContextHolder.getContext().authentication
+            val authority = roles.map { role ->
+                SimpleGrantedAuthority(role)
+            }
+            SecurityContextHolder.getContext().authentication =
+                UsernamePasswordAuthenticationToken(authentication.principal, authentication.credentials, authority)
+            true
+        } catch (e: Exception) {
+            false
+        }
+    }
 }
